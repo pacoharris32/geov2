@@ -1,0 +1,137 @@
+/* Estilos globales */
+body, html {
+    margin: 0;
+    padding:0;
+    height: 100%;
+  }
+  
+  /* Estilos del mapa */
+/* #map {
+    /* height: 50vh; */
+/*    height: 75%;
+/*    width: 75%;
+
+/*  }
+
+  /* Estilos del mapa */
+#map {
+  /* height: 50vh; */
+  height: 90%;
+  width: 100%;
+/*  margin-left: 320px; /* Ajusta el margen izquierdo para dejar espacio para la barra lateral */
+}
+
+/* Aumentar el tamaño de la letra del contenido del popup */
+.leaflet-popup-content {
+  font-size: 12px; /* Ajusta el tamaño de la fuente según tus preferencias */
+}
+
+/* Estilos personalizados para el widget de control de capas */
+.leaflet-control-layers {
+  font-size: 12px; /* Ajusta el tamaño de la fuente según tus preferencias */
+}
+
+
+/* Estilos del widget de zoom */
+.leaflet-control-zoom {
+  bottom: -60px; /* Ajusta la distancia vertical según sea necesario */
+}
+
+/* Estilo para los polígonos de acuíferos */
+.acuifero-polygon {
+  fill-opacity: 0; /* Cambia el relleno a transparente */
+  /*stroke: #3398FF; /* Color del borde */
+  stroke: #3398FF; /* Color del borde */
+
+  stroke-width: 2; /* Ancho del borde */
+}
+
+/* Estilo para los polígonos de acuíferos */
+.estados-polygon {
+  fill-opacity: 0; /* Cambia el relleno a transparente */
+  /*stroke: #3398FF; /* Color del borde */
+  stroke: brown; /* Color del borde */
+
+  stroke-width: 2; /* Ancho del borde */
+}
+
+/* Estilos del contenedor de búsqueda */
+#search-container {
+  position: absolute;
+  top: 130px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.acuifero-highlighted {
+  fill-opacity: 0.5; /* Cambia la opacidad del relleno cuando se resalta */
+  stroke: red; /* Cambia el color del borde cuando se resalta */
+  stroke-width: 2; /* Ajusta el ancho del borde cuando se resalta */
+}
+
+
+  /* Estilos de la escala gráfica */
+ .leaflet-control-scale {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: nowrap;
+} 
+
+/* Estilos para la leyenda */
+.legend {
+  background: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.legend-symbol {
+  width: 20px;
+  height: 20px;
+  margin-right: 100px;
+}
+
+.legend-label {
+  font-size: 12px;
+}
+
+/* Estilos para Awesomplete */
+.awesomplete {
+  display: block;
+  width: 100%;
+  max-width: 300px; /* Ajusta el ancho máximo según tus necesidades */
+}
+
+/* Estilos para cada elemento de sugerencia en Awesomplete */
+.awesomplete li {
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.awesomplete li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Estilos para el resaltado de coincidencias en sugerencias */
+.awesomplete li[aria-selected="true"] {
+  background-color: #3398FF;
+  color: white;
+}
+
+
+
+  

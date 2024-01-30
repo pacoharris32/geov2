@@ -1,0 +1,78 @@
+/* Estilos globales */
+/* body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  } */
+  
+  /* Estilos del mapa */
+  /* #map {
+    height: 100%;
+    width: 100%;
+  }
+
+  #search-container {
+    text-align: center; /* Centra el contenido horizontalmente */
+ /*   margin-top: 200px; /* Añade !important para garantizar que el estilo se aplique */
+/*}
+
+
+
+
+#search-input {
+    margin-bottom: 200px; /* Agrega un margen inferior entre el input y el botón */
+/*}
+
+#search-button {
+    display: block; /* Hace que el botón ocupe todo el ancho disponible */
+/*    margin: 0 auto; /* Centra el botón horizontalmente */
+/*} */
+
+/* Estilos globales */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Estilos del mapa */
+#map {
+  height: 10%;
+  width: 10%;
+}
+
+/* Estilos del contenedor principal */
+/* #button-zoom-container {
+  display: flex; /* Utiliza un contenedor flexible para alinear elementos horizontalmente */
+/*   flex-direction: column; /* Establece la dirección como columna para apilar elementos verticalmente */
+/*   align-items: center; /* Centra verticalmente los elementos en el contenedor */
+/* }
+
+/* Estilos del contenedor de búsqueda */
+/* #search-container {
+  text-align: center; /* Centra el contenido horizontalmente */
+/*   margin-top: 120px; /* Ajusta el margen superior para separar el contenedor de búsqueda del widget de zoom */
+/* }
+
+/* Estilos del campo de búsqueda */
+/* #search-input {
+/*   width: 200px; /* Ancho del campo de búsqueda */
+/*   padding: 5px; /* Espaciado interno del campo */
+/*   font-size: 16px; /* Tamaño de fuente */
+/*   border: 1px solid #ccc; /* Borde del campo */
+/*   background-color: #f7f7f7; /* Color de fondo */
+/*   color: #333; /* Color del texto */
+  /* Otros estilos personalizados que desees agregar */
+/* }
+
+
+/* Estilos del botón de búsqueda */
+/* #search-button {
+/*   background-color: #007bff; /* Color de fondo del botón */
+/*   color: #fff; /* Color del texto del botón */
+/*   padding: 10px 20px; /* Espaciado interno del botón */
+/*   font-size: 16px; /* Tamaño de fuente del botón */
+/*   border: none; /* Sin borde */
+/*   cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+  /* Otros estilos personalizados que desees agregar */
+/* }
