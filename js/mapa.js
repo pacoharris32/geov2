@@ -73,7 +73,7 @@ $(document).ready(function() {
     // Se procesó la capa con el campo DOC (29/01/2024). Se cambió el nombre a: c_acuiferos_2023_doc.geojson
     var acuiferosUrl = 'data/c_acuiferos_2023_doc.geojson';
 
-    var estadosUrl = 'data/estados.geojson';
+    var estadosUrl = 'data/estados2.geojson';
   
     // Agregar capas de información
     $.getJSON(acuiferosUrl, function(data) {
