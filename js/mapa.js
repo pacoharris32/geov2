@@ -64,21 +64,45 @@ $(document).ready(function() {
  
 
 
-    var estadosLayer = L.geoJSON(null, {
-      style: function(feature) {
-        return {
-          color: 'black', // Cambia el color del borde a negro
-          fillColor: 'black', // Cambia el color de relleno a negro (si lo hubiera)
-          fillOpacity: 0.02, // Ajusta la opacidad del relleno si es necesario
-        };
-      },
+    // var estadosLayer = L.geoJSON(null, {
+    //  style: function(feature) {
+    //    return {
+    //      color: 'black', // Cambia el color del borde a negro
+    //      fillColor: 'black', // Cambia el color de relleno a negro (si lo hubiera)
+    //      fillOpacity: 0.02, // Ajusta la opacidad del relleno si es necesario
+    //    };
+    //  },
   
+    //    onEachFeature: function(feature, layer) {
+    //        layer.bindPopup('<strong>Estado:</strong> ' + feature.properties.NOMGEO +
+    //            '<br><strong>Clave:</strong> ' + feature.properties.CVE_ENT);
+    //    }
+    //});
+  
+    // Se modificó esta caopa de Estados para mostrar las etiquetas de sus nombres:
+    
+    var estadosLayer = L.geoJSON(null, {
+        style: function(feature) {
+            return {
+                color: 'black', // Cambia el color del borde a negro
+                fillColor: 'black', // Cambia el color de relleno a negro (si lo hubiera)
+                fillOpacity: 0.02, // Ajusta la opacidad del relleno si es necesario
+            };
+        },
+    
         onEachFeature: function(feature, layer) {
-            layer.bindPopup('<strong>Estado:</strong> ' + feature.properties.NOMGEO +
-                '<br><strong>Clave:</strong> ' + feature.properties.CVE_ENT);
+            // Muestra solo el texto sin recuadro
+            layer.bindTooltip(feature.properties.NOMGEO, {
+                permanent: true,
+                direction: 'center',
+                className: 'tooltip-label',
+                opacity: 0.5,  // Establece la opacidad del tooltip
+                interactive: false  // Desactiva la interactividad del tooltip
+            }).openTooltip();
         }
     });
-  
+    
+
     //console.log("Antes de cargar el archivo GeoJSON de acuiferos");
 
 
