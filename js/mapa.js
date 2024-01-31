@@ -9,6 +9,7 @@ $(document).ready(function() {
     var esriSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'CONAGUA-SGT-GAS; Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
+    
   
     // Agregar el mapa base por defecto
     // Por restricciones de la Red CONAGUA, se cambió al mapa base de ESRI. No cargaba el de OpenStreet Maps
@@ -26,17 +27,43 @@ $(document).ready(function() {
         onEachFeature: function(feature, layer) {
             console.log("Procesando la característica:", feature.properties);
 
-            var popupContent = "<strong>Nombre del acuífero:</strong> " + feature.properties.NOM_ACUI +
-                "<br><strong>Clave:</strong> " + feature.properties.CLV_ACUI +
-                "<br><strong>Disponibilidad[hm3]=</strong> " + feature.properties.DMA_POSITI +
-                "<br><strong>Déficit[hm3]=</strong> " + feature.properties.DMA_NEGATI +
+            // Concatenamos los campos CLV_ACUI y NOM_ACUI
+            var popupContent = 
+            //"<strong>Nombre del acuífero:</strong> " + feature.properties.NOM_ACUI +
+            //"<br><strong></strong> " + feature.properties.CLV_ACUI +
+            "<strong>" + feature.properties.CLV_ACUI + " " + feature.properties.NOM_ACUI + "</strong>" +
+            "<br>DISPONIBILIDAD(hm3)= " + feature.properties.DMA_POSITI +
+            "<br>DÉFICIT(hm3)= " + feature.properties.DMA_NEGATI +
+            // "<br><strong>Condición=</strong> " + feature.properties.CONDICION +
+            "<br><strong></strong> <a href='" + feature.properties.DOC + "' target='_blank'>Ver Documento</a>";
+
+
+
+         //   var popupContent = 
+            //"<strong>Nombre del acuífero:</strong> " + feature.properties.NOM_ACUI +
+         //   "<br><strong></strong> "  + feature.properties.CLV_ACUI +
+         //   "  " + feature.properties.NOM_ACUI  + // Concatenar las dos etiquetas aquí
+         //   "<br><strong>Disponibilidad[hm3]=</strong> " + feature.properties.DMA_POSITI +
+         //   "<br><strong>Déficit[hm3]=</strong> " + feature.properties.DMA_NEGATI +
+            // "<br><strong>Condición=</strong> " + feature.properties.CONDICION +
+         //   "<br><strong>Documento:</strong> <a href='" + feature.properties.DOC + "' target='_blank'>Clic aquí</a>";
+
+    //        var popupContent = "<strong>Nombre del acuífero:</strong> " + feature.properties.NOM_ACUI +
+    //            "<br><strong>Clave:</strong> " + feature.properties.CLV_ACUI +
+    //            "<br><strong>Disponibilidad[hm3]=</strong> " + feature.properties.DMA_POSITI +
+    //            "<br><strong>Déficit[hm3]=</strong> " + feature.properties.DMA_NEGATI +
                 // "<br><strong>Condición=</strong> " + feature.properties.CONDICION +
-                "<br><strong>Documento:</strong> <a href='" + feature.properties.DOC + "' target='_blank'>Clic aquí</a>";
+    //            "<br><strong>Documento:</strong> <a href='" + feature.properties.DOC + "' target='_blank'>Clic aquí</a>";
   
             layer.bindPopup(popupContent);
         }
-    });
+     });
   
+
+    
+ 
+
+
     var estadosLayer = L.geoJSON(null, {
       style: function(feature) {
         return {
