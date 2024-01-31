@@ -2,19 +2,55 @@ $(document).ready(function() {
     var map = L.map('map').setView([20.0, -102.0], 5);
   
     // Mapas base
-    var openStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
+   // var openStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+   //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+   // });
   
     var esriSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'CONAGUA-SGT-GAS; Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
     
+    // Mapa base ESRI Satellite con etiquetas de lugares
+    //var esriSatelliteLabels = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}?text=Streets%2CStreets%20Night', {
+    //    attribution: 'CONAGUA-SGT-GAS; Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    //});
+
+    // Mapa base TopoMap de OpenStreetMap
+    var openStreetMapTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        attribution: 'Mapa &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contribuyentes, SRTM | Estilo: &copy; <a href="https://opentopomap.org/about#style">OpenTopoMap</a>'
+    });
+
+    // Mapa base de satélite con etiquetas de Mapbox
+   // var mapboxSatelliteLabels = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=YOUR_MAPBOX_ACCESS_TOKEN', {
+   //     attribution: 'Map data &copy; <a href="https://www.mapbox.com/">Mapbox</a> contributors'
+   // });
+
+    // Mapa base de satélite con etiquetas de NASA Worldview
+    //var nasaWorldview = L.tileLayer('https://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg', {
+    //    attribution: 'NASA Worldview, Earthdata Search'
+    //});
+
+    // Mapa base TopoMap de ESRI
+    var esriTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+    });
+    var CyclOSM = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+        attribution: 'Tiles &copy; CYCLOSM &mdash; OSM'
+    });
+
+// ...
+
+    // Agregar el mapa base por defecto (por ejemplo, OpenStreetMap)
+    CyclOSM.addTo(map);
+
+// Agregar control de capas con los mapas base disponibles
+
+
   
     // Agregar el mapa base por defecto
     // Por restricciones de la Red CONAGUA, se cambió al mapa base de ESRI. No cargaba el de OpenStreet Maps
     // openStreetMap.addTo(map);
-    esriSatellite.addTo(map);
+    //esriSatellite.addTo(map);
 
   
     // Capas de información GeoJSON
@@ -86,7 +122,7 @@ $(document).ready(function() {
             return {
                 color: 'black', // Cambia el color del borde a negro
                 fillColor: 'black', // Cambia el color de relleno a negro (si lo hubiera)
-                fillOpacity: 0.02, // Ajusta la opacidad del relleno si es necesario
+                fillOpacity: 0.1, // Ajusta la opacidad del relleno si es necesario
             };
         },
     
@@ -96,7 +132,7 @@ $(document).ready(function() {
                 permanent: true,
                 direction: 'center',
                 className: 'tooltip-label',
-                opacity: 0.5,  // Establece la opacidad del tooltip
+                opacity: 0.7,  // Establece la opacidad del tooltip
                 interactive: false  // Desactiva la interactividad del tooltip
             }).openTooltip();
         }
@@ -146,13 +182,42 @@ $(document).ready(function() {
   
     // Agregar control de capas
     L.control.layers(null, overlayMaps).addTo(map);
+
+   // Agregar control de mapas base
+
+    var baseMaps = {
+        "CyclOSM": CyclOSM,
+        "ESRI TopoMap": esriTopoMap,
+        "OSM TopoMap": openStreetMapTopoMap,
+        "Esri Satellite": esriSatellite
+        //"OpenStreetMap": openStreetMap,
+        //"Esri Satellite Labels": esriSatelliteLabels,
+        //"MapboxSatelliteLabels": mapboxSatelliteLabels,
+        //"NASAWorldView": nasaWorldview
+
+
+
+        //"OpenStreetMap": openStreetMap,
+        //"Esri Satellite": esriSatellite,
+        //"Esri Satellite Labels": esriSatelliteLabels,
+        //"OpenStreetMap TopoMap": openStreetMapTopoMap,
+        //"MapboxSatelliteLabels": mapboxSatelliteLabels,
+        //"NASAWorldView": nasaWorldview
+        //"ESRI TopoMap": esriTopoMap,
+        //"CyclOSM": CyclOSM
+    
+    
+    
+    };
+    
+    L.control.layers(baseMaps).addTo(map);
   
     // Agregar control de mapas base
-    var baseMaps = {
-        "OpenStreetMap": openStreetMap,
-        "Esri Satellite": esriSatellite
-    };
-    L.control.layers(baseMaps).addTo(map);
+   //var baseMaps = {
+   //     "OpenStreetMap": openStreetMap,
+   //     "Esri Satellite": esriSatellite
+   // };
+   // L.control.layers(baseMaps).addTo(map);
   
     // Agregar leyenda
     var legend = L.control({ position: 'bottomright' });
